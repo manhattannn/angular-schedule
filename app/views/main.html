@@ -1,3 +1,36 @@
+
+<h1>This is some shit</h1>
+
+<div class="table-responsive" ng-controller="cmScheduleCtrl">
+<input ng-model="date"></input>
+<table class="table table-bordered table-hover">
+  <thead>
+    <div class="row">
+      <div class="col-xs-2">
+      <button type="button" class="btn btn-default form-control" ng-click="move(-1)"><i class="glyphicon glyphicon-chevron-left"></i></button>
+    </div>
+    <div class="col-xs-8">
+
+    </div>
+    <div class="col-xs-2">
+    <button type="button" class="btn btn-default form-control" ng-click="move(1)"><i class="glyphicon glyphicon-chevron-right"></i></button>
+  </div>
+  <th>Time</th>
+  <th>Channel 1</th>
+  <th>Channel 2</th>
+  <th>Channel 3</th>
+  <th>Channel 4</th>
+</thead>
+  <tr ng-repeat="slot in timeslots">
+    <td>{{slot.time.display}}</td>
+    <td ng-repeat="ch in channels" ng-if="slot[ch]" rowspan="{{slot[ch].span}}">
+      <h5>{{slot[ch].title}}</h5>
+      <p><em>{{slot[ch].category}}</em><p>
+    </td>
+  </tr>
+</table>
+</div>
+
 <div class="header">
   <ul class="nav nav-pills pull-right">
     <li class="active"><a ng-href="#">Home</a></li>
