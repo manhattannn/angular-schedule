@@ -2,8 +2,10 @@
 <h1 class="text-center">Schedule</h1>
 
 <div class="table-responsive" ng-controller="cmScheduleCtrl">
-<table class="table table-bordered table-hover">
-  <thead>
+<table id="scheduleTable" class="table table-bordered table-hover" >
+  <thead style="background-color: #444; color: #fff;">
+    <tr>
+    <th colspan="5">
     <div class="row">
       <div class="col-xs-2">
       <button type="button" class="btn btn-default form-control" ng-click="move(-1)"><i class="glyphicon glyphicon-chevron-left"></i></button>
@@ -15,12 +17,17 @@
     <div class="col-xs-2">
     <button type="button" class="btn btn-default form-control" ng-click="move(1)"><i class="glyphicon glyphicon-chevron-right"></i></button>
   </div>
+</th>
+</tr>
+<tr>
   <th style="width: 8%">Time</th>
   <th style="width: 22%">Channel 1</th>
   <th style="width: 22%">Channel 2</th>
   <th style="width: 22%">Channel 3</th>
   <th style="width: 22%">Channel 4</th>
+</tr>
 </thead>
+<tbody>
   <tr ng-repeat="slot in timeslots">
     <td>{{slot.time.display}}</td>
     <td ng-repeat="ch in channels"
@@ -29,7 +36,7 @@
     tooltip="{{slot[ch].description}}"
     tooltip-append-to-body = "true"
     tooltip-placement = "bottom"
-    tooltip-toggle=>
+    >
       <div class="placeholder" ng-if="slot[ch] == 'placeholder'">
         <h5>TBD</h5>
         <p> No show scheduled, check back later.</p>
@@ -40,5 +47,13 @@
       </div>
     </td>
   </tr>
+</tbody>
 </table>
+
+<script>
+jQuery('table').floatThead();
+</script>
+
+
+
 </div>

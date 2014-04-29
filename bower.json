@@ -14,7 +14,8 @@
     "angular-bootstrap": "~0.10.0",
     "ng-grid": "~2.0.10",
     "angular-loader": "~1.2.16",
-    "iframe-resizer": "~2.4.3"
+    "iframe-resizer": "~2.4.3",
+    "floatThead": "~1.2.7"
   },
   "devDependencies": {
     "angular-mocks": "1.2.15",

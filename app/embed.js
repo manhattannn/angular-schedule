@@ -3,7 +3,6 @@
 //BAsed on http://shootitlive.com/2012/07/developing-an-embeddable-javascript-widget/
 (function(global) {
 
-  //Handy async with a callback so things are not loaded incorrectly.
   function async(url, before, callback) {
     var script = document.createElement('script');
     script.src = '//' + url;
@@ -22,22 +21,21 @@
       foundEls.push(el);
       console.log('Identified embed tag %o', el);
 
+      var iframe = document.createElement('iframe');
+      iframe.src = "http://127.0.0.1:9000";
+      iframe.width="100%";
+      iframe.scrolling="no";
+      iframe.className ="cm-widget";
+      iframe.frameBorder = "0";
+      iframe.style.backgroundColor = "transparent";
+      iframe.allowTransparency="true";
+
+      el.parentNode.insertBefore(iframe, el);
+
       async('raw2.github.com/davidjbradshaw/iframe-resizer/master/js/iframeResizer.min.js',
         el,
         function(){
-
-          var iframe = document.createElement('iframe');
-          iframe.src = "http://127.0.0.1:9000";
-          iframe.width="100%";
-          iframe.scrolling="no";
-          iframe.className ="cm-widget";
-          iframe.frameBorder = "0";
-          iframe.style.backgroundColor = "transparent";
-          iframe.allowTransparency="true";
-
-          el.parentNode.insertBefore(iframe, el);
-          
-          iFrameResize({},'iframe.cm-widget');
+          iFrameResize({bodyMargin: "0px 0px 200px 0px", log: true},'iframe.cm-widget');
         }
       );
     }
