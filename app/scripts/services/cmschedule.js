@@ -2,7 +2,7 @@
 
 angular.module('cmScheduleApp')
   .factory('cmScheduleData', function ($http) {
-    var endpoint = 'http://mnn_reporting.dev.zivtech.com/schedule/get';
+    var endpoint = 'https://mnn_reporting.dev.zivtech.com/schedule/get';
     var tz = 'America/New_York';
 
     function formatDate(date) {
